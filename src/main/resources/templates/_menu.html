@@ -17,6 +17,10 @@
 
     | &nbsp;
 
+    <a th:href="@{/chat-demo}">Chat</a>
+
+    | &nbsp;
+
     <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}">Logout</a>
 
 </div>
