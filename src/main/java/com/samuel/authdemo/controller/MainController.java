@@ -1,7 +1,11 @@
 package com.samuel.authdemo.controller;
 
+import com.samuel.authdemo.model.Message;
+import com.samuel.authdemo.model.OutputMessage;
 import com.samuel.authdemo.utils.WebUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -10,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Slf4j
 @Controller
@@ -90,4 +96,12 @@ public class MainController {
         log.info("Returning sockets page");
         return "sockets";
     }
+
+    @MessageMapping("/chat")
+    @SendTo("/topic/messages")
+    public OutputMessage send(Message message) throws Exception {
+        String time = new SimpleDateFormat("HH:mm").format(new Date());
+        return new OutputMessage(message.getFrom(), message.getText(), time);
+    }
+
 }
