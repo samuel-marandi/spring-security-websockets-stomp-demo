@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.samuel</groupId>
-    <artifactId>auth-demo</artifactId>
+    <artifactId>sockets-security-stomp-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>auth-demo</name>
-    <description>authentication-demo-sb</description>
+    <name>sockets-security-stomp-demo</name>
+    <description>spring-authentication-and-web-sockets-demo-with-stomp-in-sb</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
