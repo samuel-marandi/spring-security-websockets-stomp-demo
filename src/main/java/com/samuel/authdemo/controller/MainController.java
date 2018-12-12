@@ -10,10 +10,12 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.HtmlUtils;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -93,14 +95,17 @@ public class MainController {
     }
 
     @RequestMapping(value = "/sockets-demo", method = RequestMethod.GET)
-    public String socketsDemo(Model model) {
-        log.info("Returning sockets page");
+    public String socketsDemo(Model model, HttpSession session) {
+//        log.info("Returning sockets page");
+//        log.info("This is the session id "+ session.getId());
         return "sockets";
     }
 
     @RequestMapping(value = "/chat-demo", method = RequestMethod.GET)
-    public String chatDemo(Model model) {
-        log.info("Returning chat page");
+    public String chatDemo(Model model, HttpSession session, @RequestHeader("Cookie") String cookie) {
+//        log.info("Returning chat page");
+//        log.info("This is the session id "+ session.getId());
+//        log.info("Some Details "+ cookie);
         return "chat";
     }
 
